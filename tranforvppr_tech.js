@@ -226,7 +226,7 @@ function draw() {
       rect(0.1 * width, 0.7 * height, underlineLength, 5);
     }
 
-    if (millis() - millisMarker > 3000 && millis() - millisMarker < 4500) {
+    if (millis() - millisMarker > 3000 && millis() - millisMarker < 5000) {
       headerY = tween(headerY, 0);
       headerTransparency = tween(headerTransparency, 255);
     }
