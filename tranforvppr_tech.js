@@ -1,13 +1,18 @@
 let level;
 let easing;
 let millisMarker;
+let renderer;
 
 let isMobile;
 
 let headerY;
 let headerTransparency;
 
+let hasScrolled;
+let footerTransparency;
+
 let offsetTitle;
+let titleX;
 let titleTransparency;
 let underlineLength;
 
@@ -16,10 +21,12 @@ let josefinItalic;
 let montsserat;
 
 let gradient;
+let logo;
 
 let cursorX;
 let cursorY;
 
+let offsetLogo;
 let offsetWhoAmI;
 let offsetInitiative;
 let offsetInnovation;
@@ -33,7 +40,7 @@ function tween(currentValue, targetValue) {
 
 function mouseTween(currentValue, targetValue) {
   let newValue = currentValue;
-  newValue += (targetValue - currentValue) * 0.5;
+  newValue += (targetValue - currentValue) * 0.2;
   return newValue;
 }
 
@@ -53,9 +60,13 @@ function levelSetup() {
     offsetInitiative = 0;
     offsetInnovation = 0;
     offsetInclusivity = 0;
+    offsetLogo = 0;
     offsetTitle = height/2;
+    titleX = 0.1 * width;
     titleTransparency = 0;
     underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
   }
 
   if (level == "mobileHome") {
@@ -81,8 +92,12 @@ function windowResized() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  renderer = createCanvas(windowWidth, windowHeight);
+  renderer.canvas.style.display = 'block';
+  document.title = "The Tran Plan";
+
   gradient = loadImage('assets/gradient.png');
+  logo = loadImage('assets/logo.png');
 
   noCursor();
 
@@ -102,7 +117,10 @@ function setup() {
 
 function draw() {
   background(238, 165, 166)
-    image(gradient, 0, 0, width, height);
+
+    tint(255);
+  imageMode(CORNER);
+  image(gradient, 0, 0, width, height);
 
   if (level == "home") {
 
@@ -112,7 +130,8 @@ function draw() {
      rect(0.8 * width, headerY, 0.2 * width, height/5);
      rect(0.6 * width, headerY, 0.2 * width, height/5);
      rect(0.4 * width, headerY, 0.2 * width, height/5);
-     rect(0.2 * width, headerY, 0.2 * width, height/5);*/
+     rect(0.2 * width, headerY, 0.2 * width, height/5);
+     rect(0, headerY, 0.2 * width, height/5);*/
 
     //header
     fill(255, 255, 255, headerTransparency);
@@ -125,65 +144,97 @@ function draw() {
     text("INITIATIVE", 0.5 * width, headerY + height/10 + offsetInitiative);
     text("WHO AM I", 0.3 * width, headerY + height/10 + offsetWhoAmI);
 
-    //title
-    if (millis() - millisMarker < 3500) {
-      offsetTitle = tween(offsetTitle, 0);
-      titleTransparency = tween(titleTransparency, 255);
-    }
+    tint(255, headerTransparency);
+    imageMode(CENTER);
+    image(logo, 0.1 * width, headerY + height/12 + offsetLogo, height/10, height/10);
 
+    //title
     fill(255, 255, 255, titleTransparency);
     noStroke();
     textSize(100);
     textFont(montsserat);
     textAlign(LEFT);
-    text("It's time to make OSA", 0.1 * width, height/2 + offsetTitle);
-    
+    text("It's time to make OSA", titleX, height/2 + offsetTitle);
+
     textFont(josefinItalic);
-    text("BETTER", 0.1 * width, 0.675 * height + offsetTitle);
+    text("BETTER", titleX, 0.675 * height + offsetTitle);
+
+    //footer
+    fill(255, 255, 255, footerTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefin);
+    textAlign(CENTER);
+    text("[SCROLL] & [UP/DOWN ARROW]", width/2, 0.9 * height);
+
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
       offsetInnovation = tween(offsetInnovation, 0);
       offsetInitiative = tween(offsetInitiative, 0);
       offsetWhoAmI = tween(offsetWhoAmI, 0);
+      offsetLogo = tween(offsetLogo, 0);
     } else {
       if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
         offsetInclusivity = tween(offsetInclusivity, 0);
         offsetInnovation = tween(offsetInnovation, 20);
         offsetInitiative = tween(offsetInitiative, 0);
         offsetWhoAmI = tween(offsetWhoAmI, 0);
+        offsetLogo = tween(offsetLogo, 0);
       } else {
         if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
           offsetInclusivity = tween(offsetInclusivity, 0);
           offsetInnovation = tween(offsetInnovation, 0);
           offsetInitiative = tween(offsetInitiative, 20);
           offsetWhoAmI = tween(offsetWhoAmI, 0);
+          offsetLogo = tween(offsetLogo, 0);
         } else {
           if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
             offsetInclusivity = tween(offsetInclusivity, 0);
             offsetInnovation = tween(offsetInnovation, 0);
             offsetInitiative = tween(offsetInitiative, 0);
             offsetWhoAmI = tween(offsetWhoAmI, 20);
+            offsetLogo = tween(offsetLogo, 0);
           } else {
-            offsetInclusivity = tween(offsetInclusivity, 0);
-            offsetInnovation = tween(offsetInnovation, 0);
-            offsetInitiative = tween(offsetInitiative, 0);
-            offsetWhoAmI = tween(offsetWhoAmI, 0);
+            if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 20);
+            } else {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 0);
+            }
           }
         }
       }
     }
 
-    if (millis() - millisMarker > 2500) {
+    if (millis() - millisMarker < 3500) {
+      offsetTitle = tween(offsetTitle, 0);
+      titleTransparency = tween(titleTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 1500) {
       underlineLength = titleTween(underlineLength, 400);
       fill(255);
       noStroke();
       rect(0.1 * width, 0.7 * height, underlineLength, 5);
     }
 
-    if (millis() - millisMarker > 5000) {
+    if (millis() - millisMarker > 3000 && millis() - millisMarker < 4000) {
       headerY = tween(headerY, 0);
       headerTransparency = tween(headerTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 5000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
     }
   }
 
@@ -195,7 +246,7 @@ function draw() {
     rect(0.8 * width, headerY + height/6 + 15, 0.1 * width, 5);
     rect(0.8 * width, headerY + height/6 + 30, 0.1 * width, 5);
 
-    if (millis() - millisMarker > 5000) {
+    if (millis() - millisMarker > 2000 && millis() - millisMarker < 3000) {
       headerTransparency = tween(headerTransparency, 255);
     }
   }
@@ -213,4 +264,27 @@ function draw() {
 
 function mousePressed() {
   print(mouseX, mouseY);
+}
+
+function mouseWheel(event) {
+  if (millis() - millisMarker > 5000) {
+    hasScrolled = true;
+    if (event.delta > 0) {
+      //abc
+    } else {
+      //piss
+    }
+  }
+}
+
+function keyPressed() {
+  if (millis() - millisMarker > 5000) {
+    if (keyCode == UP_ARROW) {
+      hasScrolled = true;
+    }
+
+    if (keyCode == DOWN_ARROW) {
+      hasScrolled = true;
+    }
+  }
 }
