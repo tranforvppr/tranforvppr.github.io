@@ -185,14 +185,14 @@ function draw() {
     textSize(100);
     textFont(josefinItalic);
     textAlign(LEFT);
-    text("The Tran \nPlan", 0.1 * width, 0.4 * height);
+    text("The Tran \nPlan", 0.1 * width, 0.3 * height);
     
     fill(255, 255, 255, bodyTransparency);
     noStroke();
     textSize(30);
     textFont(montsserat);
     textAlign(LEFT);
-    text("I'm Arthur Tran, and I'm looking forward \nto making SU the BEST with my PR skills!", 0.1 * width, 0.4 * height + 180);
+    text("I'm Arthur Tran, and I'm looking forward \nto making SU the BEST with my PR skills! \n \nThrough this website, you'll see all the \nqualities that make me stand out, as well \nas how SU will be run by me.", 0.1 * width, 0.3 * height + 200);
     
     tint(255, 200, 200, bodyTransparency);
     imageMode(LEFT);
