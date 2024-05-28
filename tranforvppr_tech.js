@@ -16,12 +16,17 @@ let titleX;
 let titleTransparency;
 let underlineLength;
 
+let bodyTransparency;
+let osaX;
+
 let josefin;
 let josefinItalic;
 let montsserat;
 
 let gradient;
 let logo;
+let clickIcon;
+let osa;
 
 let cursorX;
 let cursorY;
@@ -38,9 +43,9 @@ function tween(currentValue, targetValue) {
   return newValue;
 }
 
-function mouseTween(currentValue, targetValue) {
-  let newValue = currentValue;
-  newValue += (targetValue - currentValue) * 0.2;
+function inTween(currentValue, targetValue, easing) {
+  // Calculate the new value based on the current and target values
+  let newValue = currentValue + (targetValue - currentValue) * easing;
   return newValue;
 }
 
@@ -52,10 +57,10 @@ function titleTween(currentValue, targetValue) {
 
 function levelSetup() {
   if (level == "home") {
-    easing = 0.05;
+    easing = 0.1;
     millisMarker = millis();
     headerY = -windowHeight/10
-    headerTransparency = 0;
+      headerTransparency = 0;
     offsetWhoAmI = 0;
     offsetInitiative = 0;
     offsetInnovation = 0;
@@ -67,10 +72,12 @@ function levelSetup() {
     underlineLength = 0;
     hasScrolled = false;
     footerTransparency = 0;
+    bodyTransparency = 0;
+    osaX = width;
   }
 
   if (level == "mobileHome") {
-    easing = 0.05;
+    easing = 0.1;
     millisMarker = millis();
     headerY = -windowHeight/10;
     headerTransparency = 0;
@@ -105,6 +112,8 @@ function setup() {
 
   gradient = loadImage('assets/gradient.png');
   logo = loadImage('assets/logo.png');
+  clickIcon = loadImage('assets/click.png');
+  osa = loadImage('assets/osa.png');
 
   noCursor();
 
@@ -165,19 +174,27 @@ function draw() {
 
     textFont(josefinItalic);
     text("BETTER", titleX, 0.575 * height + offsetTitle);
-    
-    fill(255);
+
+    fill(255, titleTransparency);
     noStroke();
-    rect(0.1 * width, 0.6 * height, underlineLength, 5);
+    rect(titleX, 0.6 * height, underlineLength, 5);
+    
+    //body
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(100);
+    textFont(josefinItalic);
+    textAlign(LEFT);
+    text("The Tran \nPlan", 0.1 * width, 0.4 * height + offsetTitle);
+    
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(LEFT);
+    image(osa, osaX, 0.5 * height, height/1.2, height/1.2);
 
     //footer
-    fill(255, 255, 255, footerTransparency);
-    noStroke();
-    textSize(20);
-    textFont(josefin);
-    textAlign(CENTER);
-    text("[SCROLL] & [UP/DOWN ARROW]", width/2, 0.9 * height);
-
+    /*tint(255, footerTransparency);
+     imageMode(CENTER);
+     image(clickIcon, 0.5 * width, 0.8 * height, height/20, height/20);*/
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -225,24 +242,35 @@ function draw() {
       }
     }
 
-    if (millis() - millisMarker < 3500) {
+    if (millis() - millisMarker < 2000) {
       offsetTitle = tween(offsetTitle, 0);
       titleTransparency = tween(titleTransparency, 255);
     }
 
-    if (millis() - millisMarker > 1500) {
+    if (millis() - millisMarker > 1000 && millis() - millisMarker < 2000) {
       underlineLength = titleTween(underlineLength, 400);
     }
 
-    if (millis() - millisMarker > 3000 && millis() - millisMarker < 5000) {
+    if (millis() - millisMarker > 2000 && millis() - millisMarker < 4000) {
       headerY = tween(headerY, 0);
       headerTransparency = tween(headerTransparency, 255);
     }
 
-    if (millis() - millisMarker > 5000 && hasScrolled == false) {
+    if (millis() - millisMarker > 2000 && hasScrolled == false) {
       footerTransparency = tween(footerTransparency, 255);
     } else {
       footerTransparency = tween(footerTransparency, 0);
+    }
+
+    if (millis() - millisMarker > 2000) {
+      titleX = tween(titleX, 0);
+      titleTransparency = tween(titleTransparency, 0);
+      underlineLength = tween(underlineLength, 0);
+    }
+    
+    if (millis() - millisMarker > 2500) {
+      osaX = tween(osaX, 0.7 * width);
+      bodyTransparency = tween(bodyTransparency, 255);
     }
   }
 
@@ -254,7 +282,7 @@ function draw() {
     rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
     rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
     rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
-    
+
     //title
     fill(255, 255, 255, titleTransparency);
     noStroke();
@@ -266,28 +294,35 @@ function draw() {
     textFont(josefinItalic);
     textSize(70);
     text("BETTER", titleX, 0.3 * height + offsetTitle + 150);
-    
-    fill(255);
+
+    fill(255, titleTransparency);
     noStroke();
-    rect(0.1 * width, 0.3 * height + 170, underlineLength, 5);
-    
-    if (millis() - millisMarker < 3500) {
+    rect(titleX, 0.3 * height + 170, underlineLength, 5);
+
+    if (millis() - millisMarker < 2000) {
       offsetTitle = tween(offsetTitle, 0);
       titleTransparency = tween(titleTransparency, 255);
     }
 
-    if (millis() - millisMarker > 2000 && millis() - millisMarker < 3000) {
-      headerTransparency = tween(headerTransparency, 255);
-    }
-    
-    if (millis() - millisMarker > 1500) {
+    if (millis() - millisMarker > 1000 && millis() - millisMarker < 2000) {
       underlineLength = titleTween(underlineLength, 275);
     }
-    
-    if (millis() - millisMarker > 5000 && hasScrolled == false) {
+
+    if (millis() - millisMarker > 2000 && millis() - millisMarker < 4000) {
+      headerY = tween(headerY, 0);
+      headerTransparency = tween(headerTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 2000 && hasScrolled == false) {
       footerTransparency = tween(footerTransparency, 255);
     } else {
       footerTransparency = tween(footerTransparency, 0);
+    }
+
+    if (millis() - millisMarker > 2000) {
+      titleX = tween(titleX, 0);
+      titleTransparency = tween(titleTransparency, 0);
+      underlineLength = tween(underlineLength, 0);
     }
   }
 
@@ -296,35 +331,39 @@ function draw() {
     fill(0, 0, 0, 20);
     stroke(255);
     strokeWeight(2);
-    circle(cursorX, cursorY, 20);
-    cursorX = mouseTween(cursorX, mouseX);
-    cursorY = mouseTween(cursorY, mouseY);
+    circle(mouseX, mouseY, 20);
   }
 }
 
 function mousePressed() {
-  print(mouseX, mouseY);
-}
-
-function mouseWheel(event) {
-  if (millis() - millisMarker > 5000) {
-    hasScrolled = true;
-    if (event.delta > 0) {
-      //abc
-    } else {
-      //piss
-    }
-  }
-}
-
-function keyPressed() {
-  if (millis() - millisMarker > 5000) {
-    if (keyCode == UP_ARROW) {
-      hasScrolled = true;
-    }
-
-    if (keyCode == DOWN_ARROW) {
-      hasScrolled = true;
+  if (isMobile == false) {
+    if (level != "home" || millis() - millisMarker > 2000) {
+      if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
+        level = "inclusivity";
+        levelSetup();
+      } else {
+        if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
+          level = "innovation";
+          levelSetup();
+        } else {
+          if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
+            level = "initative";
+            levelSetup();
+          } else {
+            if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
+              level = "whoami";
+              levelSetup();
+            } else {
+              if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+                level = "home";
+                levelSetup();
+              } else {
+                hasScrolled = false;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
