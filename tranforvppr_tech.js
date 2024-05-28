@@ -173,11 +173,11 @@ function draw() {
     text("It's time to make OSA", titleX, 0.4 * height + offsetTitle);
 
     textFont(josefinItalic);
-    text("BETTER", titleX, 0.575 * height + offsetTitle);
+    text("BETTER", titleX, 0.4 * height + offsetTitle + 140);
 
     fill(255, titleTransparency);
     noStroke();
-    rect(titleX, 0.6 * height, underlineLength, 5);
+    rect(titleX, 0.4 * height + 160, underlineLength, 5);
     
     //body
     fill(255, 255, 255, bodyTransparency);
@@ -187,12 +187,12 @@ function draw() {
     textAlign(LEFT);
     text("The Tran \nPlan", 0.1 * width, 0.4 * height);
     
-    /*fill(255, 255, 255, bodyTransparency);
+    fill(255, 255, 255, bodyTransparency);
     noStroke();
-    textSize(20);
-    textFont(montserrat);
+    textSize(30);
+    textFont(montsserat);
     textAlign(LEFT);
-    text("The Tran \nPlan", 0.1 * width, 0.4 * height);
+    text("I'm Arthur Tran, and I'm looking forward \nto making SU the BEST with my PR skills!", 0.1 * width, 0.4 * height + 180);
     
     tint(255, 200, 200, bodyTransparency);
     imageMode(LEFT);
@@ -276,7 +276,7 @@ function draw() {
     }
     
     if (millis() - millisMarker > 2500) {
-      osaX = tween(osaX, 0.7 * width);
+      osaX = tween(osaX, 0.75 * width);
       bodyTransparency = tween(bodyTransparency, 255);
     }
   }
