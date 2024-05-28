@@ -154,10 +154,14 @@ function draw() {
     textSize(100);
     textFont(montsserat);
     textAlign(LEFT);
-    text("It's time to make OSA", titleX, height/2 + offsetTitle);
+    text("It's time to make OSA", titleX, 0.4 * height + offsetTitle);
 
     textFont(josefinItalic);
-    text("BETTER", titleX, 0.675 * height + offsetTitle);
+    text("BETTER", titleX, 0.575 * height + offsetTitle);
+    
+    fill(255);
+    noStroke();
+    rect(0.1 * width, 0.6 * height, underlineLength, 5);
 
     //footer
     fill(255, 255, 255, footerTransparency);
@@ -221,9 +225,6 @@ function draw() {
 
     if (millis() - millisMarker > 1500) {
       underlineLength = titleTween(underlineLength, 400);
-      fill(255);
-      noStroke();
-      rect(0.1 * width, 0.7 * height, underlineLength, 5);
     }
 
     if (millis() - millisMarker > 3000 && millis() - millisMarker < 5000) {
