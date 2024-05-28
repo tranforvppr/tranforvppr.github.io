@@ -185,11 +185,18 @@ function draw() {
     textSize(100);
     textFont(josefinItalic);
     textAlign(LEFT);
-    text("The Tran \nPlan", 0.1 * width, 0.4 * height + offsetTitle);
+    text("The Tran \nPlan", 0.1 * width, 0.4 * height);
+    
+    /*fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(20);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("The Tran \nPlan", 0.1 * width, 0.4 * height);
     
     tint(255, 200, 200, bodyTransparency);
     imageMode(LEFT);
-    image(osa, osaX, 0.5 * height, height/1.2, height/1.2);
+    image(osa, osaX, 0.55 * height, height/1.2, height/1.2);
 
     //footer
     /*tint(255, footerTransparency);
