@@ -55,7 +55,7 @@ function levelSetup() {
     easing = 0.05;
     millisMarker = millis();
     headerY = -windowHeight/10
-      headerTransparency = 0;
+    headerTransparency = 0;
     offsetWhoAmI = 0;
     offsetInitiative = 0;
     offsetInnovation = 0;
@@ -70,14 +70,21 @@ function levelSetup() {
   }
 
   if (level == "mobileHome") {
-    easing = 0.1;
+    easing = 0.05;
     millisMarker = millis();
-    headerY = -windowHeight/10
-      headerTransparency = 0;
+    headerY = 0
+    headerTransparency = 0;
     offsetWhoAmI = 0;
     offsetInitiative = 0;
     offsetInnovation = 0;
     offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
   }
 }
 
@@ -246,9 +253,40 @@ function draw() {
     rect(0.8 * width, headerY + height/6, 0.1 * width, 5);
     rect(0.8 * width, headerY + height/6 + 15, 0.1 * width, 5);
     rect(0.8 * width, headerY + height/6 + 30, 0.1 * width, 5);
+    
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(50);
+    textFont(montsserat);
+    textAlign(LEFT);
+    text("It's time \nto make OSA", titleX, 0.3 * height + offsetTitle);
+
+    textFont(josefinItalic);
+    textSize(70);
+    text("BETTER", titleX, 0.3 * height + offsetTitle + 150);
+    
+    fill(255);
+    noStroke();
+    rect(0.1 * width, 0.3 * height + 170, underlineLength, 5);
+    
+    if (millis() - millisMarker < 3500) {
+      offsetTitle = tween(offsetTitle, 0);
+      titleTransparency = tween(titleTransparency, 255);
+    }
 
     if (millis() - millisMarker > 2000 && millis() - millisMarker < 3000) {
       headerTransparency = tween(headerTransparency, 255);
+    }
+    
+    if (millis() - millisMarker > 1500) {
+      underlineLength = titleTween(underlineLength, 275);
+    }
+    
+    if (millis() - millisMarker > 5000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
     }
   }
 
