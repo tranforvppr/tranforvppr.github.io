@@ -251,9 +251,9 @@ function draw() {
     //menu
     fill(255, 255, 255, headerTransparency);
     noStroke();
-    rect(0.8 * width, headerY + height/6, 0.1 * width, 5);
-    rect(0.8 * width, headerY + height/6 + 15, 0.1 * width, 5);
-    rect(0.8 * width, headerY + height/6 + 30, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
     
     //title
     fill(255, 255, 255, titleTransparency);
