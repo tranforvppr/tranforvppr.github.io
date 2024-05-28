@@ -72,7 +72,7 @@ function levelSetup() {
   if (level == "mobileHome") {
     easing = 0.05;
     millisMarker = millis();
-    headerY = 0
+    headerY = -windowHeight/10;
     headerTransparency = 0;
     offsetWhoAmI = 0;
     offsetInitiative = 0;
@@ -248,6 +248,7 @@ function draw() {
 
   if (level == "mobileHome") {
 
+    //menu
     fill(255, 255, 255, headerTransparency);
     noStroke();
     rect(0.8 * width, headerY + height/6, 0.1 * width, 5);
