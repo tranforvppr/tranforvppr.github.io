@@ -4,6 +4,7 @@ let millisMarker;
 let renderer;
 
 let isMobile;
+let recentPage;
 
 let headerY;
 let headerTransparency;
@@ -78,6 +79,7 @@ function levelSetup() {
   }
 
   if (level == "mobileHome") {
+    recentPage = "mobileHome";
     easing = 0.1;
     millisMarker = millis();
     headerY = -windowHeight/10
@@ -368,12 +370,11 @@ function draw() {
 
   if (level == "mobileMenu") {
     //menu
-    fill(255, 255, 255, titleTransparency);
-    noStroke();
-    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
-    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
-    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
-    
+    stroke(255, 255, 255, titleTransparency);
+    strokeWeight(5);
+    line(0.8 * width, 0.1 * width, 0.9 * width, 0.2 * width);
+    line(0.8 * width, 0.2 * width, 0.9 * width, 0.1 * width);
+
     //title
     fill(255, 255, 255, titleTransparency);
     noStroke();
@@ -385,7 +386,7 @@ function draw() {
     text("INITIATIVE", titleX, 0.5 * height);
     text("INNOVATION", titleX, 0.7 * height);
     text("INCLUSIVITY", titleX, 0.9 * height);
-    
+
     titleX = tween(titleX, 0.1 * width);
     titleTransparency = tween(titleTransparency, 255);
   }
@@ -434,31 +435,35 @@ function mousePressed() {
   if (isMobile == true) {
     if (level != "home" || millis() - millisMarker > 2000) {
       if (level == "mobileMenu") {
-        if (mouseY < 0.2 * height) {
+        if (mouseY < 0.2 * height && mouseX < width/2) {
           level = "mobileHome";
           levelSetup();
         }
-        if (mouseY > 0.2 * height && mouseY < 0.4 * height) {
+        if (mouseY > 0.2 * height && mouseY < 0.4 * height && mouseX < 0.7 * width) {
           level = "mobileWhoAmI";
           levelSetup();
         }
-        if (mouseY > 0.4 * height && mouseY < 0.6 * height) {
+        if (mouseY > 0.4 * height && mouseY < 0.6 * height && mouseX < 0.7 * width) {
           level = "mobileInitiative";
           levelSetup();
         }
-        if (mouseY > 0.6 * height && mouseY < 0.8 * height) {
+        if (mouseY > 0.6 * height && mouseY < 0.8 * height && mouseX < 0.7 * width) {
           level = "mobileInnovation";
           levelSetup();
         }
-        if (mouseY > 0.8 * height && mouseY < height) {
+        if (mouseY > 0.8 * height && mouseX < 0.7 * width) {
           level = "mobileInclusivity";
           levelSetup();
         }
-      }
-      
-      if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
-        level = "mobileMenu";
-        levelSetup();
+        if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
+          level = recentPage;
+          levelSetup();
+        }
+      } else {
+        if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
+          level = "mobileMenu";
+          levelSetup();
+        }
       }
     }
   }
