@@ -18,6 +18,7 @@ let underlineLength;
 
 let bodyTransparency;
 let osaX;
+let osaY;
 
 let josefin;
 let josefinItalic;
@@ -79,8 +80,8 @@ function levelSetup() {
   if (level == "mobileHome") {
     easing = 0.1;
     millisMarker = millis();
-    headerY = -windowHeight/10;
-    headerTransparency = 0;
+    headerY = -windowHeight/10
+      headerTransparency = 0;
     offsetWhoAmI = 0;
     offsetInitiative = 0;
     offsetInnovation = 0;
@@ -92,6 +93,15 @@ function levelSetup() {
     underlineLength = 0;
     hasScrolled = false;
     footerTransparency = 0;
+    bodyTransparency = 0;
+    osaY = height;
+  }
+
+  if (level == "mobileMenu") {
+    easing = 0.1;
+    millisMarker = millis();
+    titleX = 0;
+    titleTransparency = 0;
   }
 }
 
@@ -115,11 +125,10 @@ function setup() {
   clickIcon = loadImage('assets/click.png');
   osa = loadImage('assets/osa.png');
 
-  noCursor();
-
   if (width > height) {
     isMobile = false;
     level = "home";
+    noCursor();
   } else {
     isMobile = true;
     level = "mobileHome";
@@ -178,7 +187,7 @@ function draw() {
     fill(255, titleTransparency);
     noStroke();
     rect(titleX, 0.4 * height + 160, underlineLength, 5);
-    
+
     //body
     fill(255, 255, 255, bodyTransparency);
     noStroke();
@@ -186,14 +195,14 @@ function draw() {
     textFont(josefinItalic);
     textAlign(LEFT);
     text("The Tran \nPlan", 0.1 * width, 0.3 * height);
-    
+
     fill(255, 255, 255, bodyTransparency);
     noStroke();
     textSize(30);
     textFont(montsserat);
     textAlign(LEFT);
     text("I'm Arthur Tran, and I'm looking forward \nto making SU the BEST with my PR skills! \n \nThrough this website, you'll see all the \nqualities that make me stand out, as well \nas how SU will be run by me.", 0.1 * width, 0.3 * height + 200);
-    
+
     tint(255, 200, 200, bodyTransparency);
     imageMode(LEFT);
     image(osa, osaX, 0.55 * height, height/1.2, height/1.2);
@@ -274,7 +283,7 @@ function draw() {
       titleTransparency = tween(titleTransparency, 0);
       underlineLength = tween(underlineLength, 0);
     }
-    
+
     if (millis() - millisMarker > 2500) {
       osaX = tween(osaX, 0.75 * width);
       bodyTransparency = tween(bodyTransparency, 255);
@@ -306,6 +315,25 @@ function draw() {
     noStroke();
     rect(titleX, 0.3 * height + 170, underlineLength, 5);
 
+    //body
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(50);
+    textFont(josefinItalic);
+    textAlign(LEFT);
+    text("The Tran \nPlan", 0.1 * width, 0.2 * height);
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(20);
+    textFont(montsserat);
+    textAlign(LEFT);
+    text("I'm Arthur Tran, and I'm looking \nforward to making SU the BEST \nwith my PR skills! \n \nThrough this website, you'll see \nall the qualities that make \nme stand out, as well as how \nSU will be run by me.", 0.1 * width, 0.2 * height + 100);
+
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(osa, width/2, osaY, width/2, width/2);
+
     if (millis() - millisMarker < 2000) {
       offsetTitle = tween(offsetTitle, 0);
       titleTransparency = tween(titleTransparency, 255);
@@ -331,6 +359,35 @@ function draw() {
       titleTransparency = tween(titleTransparency, 0);
       underlineLength = tween(underlineLength, 0);
     }
+
+    if (millis() - millisMarker > 2500) {
+      osaY = tween(osaY, 0.2 * height + 400);
+      bodyTransparency = tween(bodyTransparency, 255);
+    }
+  }
+
+  if (level == "mobileMenu") {
+    //menu
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+    
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(40);
+    textFont(josefin);
+    textAlign(LEFT);
+    text("HOME", titleX, 0.12 * height);
+    text("WHO AM I", titleX, 0.3 * height);
+    text("INITIATIVE", titleX, 0.5 * height);
+    text("INNOVATION", titleX, 0.7 * height);
+    text("INCLUSIVITY", titleX, 0.9 * height);
+    
+    titleX = tween(titleX, 0.1 * width);
+    titleTransparency = tween(titleTransparency, 255);
   }
 
   if (isMobile == false) {
@@ -370,6 +427,38 @@ function mousePressed() {
             }
           }
         }
+      }
+    }
+  }
+
+  if (isMobile == true) {
+    if (level != "home" || millis() - millisMarker > 2000) {
+      if (level == "mobileMenu") {
+        if (mouseY < 0.2 * height) {
+          level = "mobileHome";
+          levelSetup();
+        }
+        if (mouseY > 0.2 * height && mouseY < 0.4 * height) {
+          level = "mobileWhoAmI";
+          levelSetup();
+        }
+        if (mouseY > 0.4 * height && mouseY < 0.6 * height) {
+          level = "mobileInitiative";
+          levelSetup();
+        }
+        if (mouseY > 0.6 * height && mouseY < 0.8 * height) {
+          level = "mobileInnovation";
+          levelSetup();
+        }
+        if (mouseY > 0.8 * height && mouseY < height) {
+          level = "mobileInclusivity";
+          levelSetup();
+        }
+      }
+      
+      if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
+        level = "mobileMenu";
+        levelSetup();
       }
     }
   }
