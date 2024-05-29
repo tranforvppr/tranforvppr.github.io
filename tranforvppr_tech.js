@@ -1,3 +1,4 @@
+//big ballz mrow :3
 let level;
 let easing;
 let millisMarker;
@@ -432,6 +433,44 @@ function mousePressed() {
     }
   }
 
+  if (isMobile == true) {
+    if (level != "home" || millis() - millisMarker > 2000) {
+      if (level == "mobileMenu") {
+        if (mouseY < 0.2 * height && mouseX < width/2) {
+          level = "mobileHome";
+          levelSetup();
+        }
+        if (mouseY > 0.2 * height && mouseY < 0.4 * height && mouseX < 0.7 * width) {
+          level = "mobileWhoAmI";
+          levelSetup();
+        }
+        if (mouseY > 0.4 * height && mouseY < 0.6 * height && mouseX < 0.7 * width) {
+          level = "mobileInitiative";
+          levelSetup();
+        }
+        if (mouseY > 0.6 * height && mouseY < 0.8 * height && mouseX < 0.7 * width) {
+          level = "mobileInnovation";
+          levelSetup();
+        }
+        if (mouseY > 0.8 * height && mouseX < 0.7 * width) {
+          level = "mobileInclusivity";
+          levelSetup();
+        }
+        if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
+          level = recentPage;
+          levelSetup();
+        }
+      } else {
+        if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
+          level = "mobileMenu";
+          levelSetup();
+        }
+      }
+    }
+  }
+}
+
+function mouseReleased() {
   if (isMobile == true) {
     if (level != "home" || millis() - millisMarker > 2000) {
       if (level == "mobileMenu") {
