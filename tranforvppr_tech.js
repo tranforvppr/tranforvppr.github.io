@@ -111,6 +111,11 @@ function preload() {
   josefin = loadFont('assets/josefin.ttf');
   montsserat = loadFont('assets/montsserat.ttf');
   josefinItalic = loadFont('assets/josefin_italic.ttf');
+  
+  gradient = loadImage('assets/gradient.png');
+  logo = loadImage('assets/logo.png');
+  clickIcon = loadImage('assets/click.png');
+  osa = loadImage('assets/osa.png');
 }
 
 function windowResized() {
@@ -121,11 +126,6 @@ function setup() {
   renderer = createCanvas(windowWidth, windowHeight);
   renderer.canvas.style.display = 'block';
   document.title = "The Tran Plan";
-
-  gradient = loadImage('assets/gradient.png');
-  logo = loadImage('assets/logo.png');
-  clickIcon = loadImage('assets/click.png');
-  osa = loadImage('assets/osa.png');
 
   if (width > height) {
     isMobile = false;
