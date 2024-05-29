@@ -106,13 +106,25 @@ function levelSetup() {
     titleX = 0;
     titleTransparency = 0;
   }
+
+  if (level == "initiative") {
+    easing = 0.1;
+    millisMarker = millis();
+    offsetLogo = 0;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+  }
 }
 
 function preload() {
   josefin = loadFont('assets/josefin.ttf');
   montsserat = loadFont('assets/montsserat.ttf');
   josefinItalic = loadFont('assets/josefin_italic.ttf');
-  
+
   gradient = loadImage('assets/gradient.png');
   logo = loadImage('assets/logo.png');
   clickIcon = loadImage('assets/click.png');
@@ -392,6 +404,69 @@ function draw() {
     titleTransparency = tween(titleTransparency, 255);
   }
 
+  if (level == "initiative") {
+    //header
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefin);
+    textAlign(CENTER);
+    text("INCLUSIVITY", 0.9 * width, headerY + height/10 + offsetInclusivity);
+    text("INNOVATION", 0.7 * width, headerY + height/10 + offsetInnovation);
+    text("INITIATIVE", 0.5 * width, headerY + height/10 + offsetInitiative);
+    text("WHO AM I", 0.3 * width, headerY + height/10 + offsetWhoAmI);
+
+    tint(255, headerTransparency);
+    imageMode(CENTER);
+    image(logo, 0.1 * width, headerY + height/12 + offsetLogo, height/10, height/10);
+
+    if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
+      offsetInclusivity = tween(offsetInclusivity, 20);
+      offsetInnovation = tween(offsetInnovation, 0);
+      offsetInitiative = tween(offsetInitiative, 0);
+      offsetWhoAmI = tween(offsetWhoAmI, 0);
+      offsetLogo = tween(offsetLogo, 0);
+    } else {
+      if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
+        offsetInclusivity = tween(offsetInclusivity, 0);
+        offsetInnovation = tween(offsetInnovation, 20);
+        offsetInitiative = tween(offsetInitiative, 0);
+        offsetWhoAmI = tween(offsetWhoAmI, 0);
+        offsetLogo = tween(offsetLogo, 0);
+      } else {
+        if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
+          offsetInclusivity = tween(offsetInclusivity, 0);
+          offsetInnovation = tween(offsetInnovation, 0);
+          offsetInitiative = tween(offsetInitiative, 20);
+          offsetWhoAmI = tween(offsetWhoAmI, 0);
+          offsetLogo = tween(offsetLogo, 0);
+        } else {
+          if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
+            offsetInclusivity = tween(offsetInclusivity, 0);
+            offsetInnovation = tween(offsetInnovation, 0);
+            offsetInitiative = tween(offsetInitiative, 0);
+            offsetWhoAmI = tween(offsetWhoAmI, 20);
+            offsetLogo = tween(offsetLogo, 0);
+          } else {
+            if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 20);
+            } else {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 0);
+            }
+          }
+        }
+      }
+    }
+  }
+
   if (isMobile == false) {
     //cursor
     fill(0, 0, 0, 20);
@@ -413,7 +488,7 @@ function mousePressed() {
           levelSetup();
         } else {
           if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
-            level = "initative";
+            level = "initiative";
             levelSetup();
           } else {
             if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
@@ -428,42 +503,6 @@ function mousePressed() {
               }
             }
           }
-        }
-      }
-    }
-  }
-
-  if (isMobile == true) {
-    if (level != "home" || millis() - millisMarker > 2000) {
-      if (level == "mobileMenu") {
-        if (mouseY < 0.2 * height && mouseX < width/2) {
-          level = "mobileHome";
-          levelSetup();
-        }
-        if (mouseY > 0.2 * height && mouseY < 0.4 * height && mouseX < 0.7 * width) {
-          level = "mobileWhoAmI";
-          levelSetup();
-        }
-        if (mouseY > 0.4 * height && mouseY < 0.6 * height && mouseX < 0.7 * width) {
-          level = "mobileInitiative";
-          levelSetup();
-        }
-        if (mouseY > 0.6 * height && mouseY < 0.8 * height && mouseX < 0.7 * width) {
-          level = "mobileInnovation";
-          levelSetup();
-        }
-        if (mouseY > 0.8 * height && mouseX < 0.7 * width) {
-          level = "mobileInclusivity";
-          levelSetup();
-        }
-        if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
-          level = recentPage;
-          levelSetup();
-        }
-      } else {
-        if (mouseX > 0.8 * width && mouseX < 0.9 * width && mouseY > 0.1 * width && mouseY < 0.2 * width) {
-          level = "mobileMenu";
-          levelSetup();
         }
       }
     }
