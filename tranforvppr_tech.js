@@ -2,6 +2,7 @@
 let level;
 let easing;
 let millisMarker;
+let touchCooldown;
 let renderer;
 
 let isMobile;
@@ -464,6 +465,8 @@ function setup() {
     isMobile = true;
     level = "mobileHome";
   }
+  
+  touchCooldown = millis();
 
   cursorX = width/2;
   cursorY = height/2;
@@ -2241,7 +2244,8 @@ function mousePressed() {
 }
 
 function touchEnded() {
-  if (isMobile == true) {
+  if (isMobile == true && millis() - touchCooldown > 1000) {
+    touchCooldown = millis();
     if (level != "home" || millis() - millisMarker > 2000) {
       if (level == "mobileMenu") {
         if (mouseY < 0.2 * height && mouseX < width/2) {
