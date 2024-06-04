@@ -355,6 +355,81 @@ function levelSetup() {
     bodyTransparency = 0;
     infoX = width;
   }
+  
+  if (level == "inclusivity2") {
+    easing = 0.08;
+    millisMarker = millis();
+    offsetLogo = 0;
+    titleX = 0;
+    titleTransparency = 0;
+    offsetTitle = height/2;
+    underlineLength = 0;
+    hasScrolled = true;
+    bodyTransparency = 0;
+    infoX = width;
+  }
+  
+  if (level == "mobileInclusivity") {
+    recentPage = "mobileInclusivity";
+    easing = 0.1;
+    millisMarker = millis();
+    headerY = -windowHeight/10
+      offsetWhoAmI = 0;
+    offsetInitiative = 0;
+    offsetInnovation = 0;
+    offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaY = height;
+  }
+  
+  if (level == "mobileInclusitivity1") {
+    recentPage = "mobileInclusitivity1";
+    easing = 0.08;
+    millisMarker = millis();
+    offsetLogo = 0;
+    titleX = 0;
+    titleTransparency = 0;
+    offsetTitle = height/2;
+    underlineLength = 0;
+    hasScrolled = false;
+    bodyTransparency = 0;
+    infoX = width;
+  }
+  
+  if (level == "mobileInclusitivity2") {
+    recentPage = "mobileInclusitivity2";
+    easing = 0.08;
+    millisMarker = millis();
+    offsetLogo = 0;
+    titleX = 0;
+    titleTransparency = 0;
+    offsetTitle = height/2;
+    underlineLength = 0;
+    hasScrolled = false;
+    bodyTransparency = 0;
+    infoX = width;
+  }
+  
+  if (level == "mobileInclusitivity3") {
+    recentPage = "mobileInclusitivity3";
+    easing = 0.08;
+    millisMarker = millis();
+    offsetLogo = 0;
+    titleX = 0;
+    titleTransparency = 0;
+    offsetTitle = height/2;
+    underlineLength = 0;
+    hasScrolled = false;
+    bodyTransparency = 0;
+    infoX = width;
+  }
 }
 
 function preload() {
@@ -1923,7 +1998,111 @@ function draw() {
     textWrap(WORD);
     text("This year, a record-breaking number of creative individuals applied to COMSU in hopes of their talents being able to serve SU’s advertisements, promotions, and digital projects. Only 6 of these applicants were selected to manage the digital aspect of the whole student body. This system blocks countless artists and developers from showcasing their ability to help out the school in advertisements and promotions.", infoX, 0.3 * height + 60, 0.4 * width);
 
-    text("While members of COMSU will continue to overlook everything, community-made designs would allow for: \n\nMore opportunities to volunteer in the community (Can be used for resumes and applications!) \nLess stress and pressure among members of COMSU and SU", infoX + 0.4 * width + 50, 0.3 * height + 60, 0.4 * width);
+    text("While members of COMSU will continue to overlook everything, community-made designs would allow for: \n\n - More opportunities to volunteer in the community (Can be used for resumes and applications!) \n\n - Less stress and pressure among members of COMSU and SU", infoX + 0.4 * width + 50, 0.3 * height + 60, 0.4 * width);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+
+    if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
+      offsetInclusivity = tween(offsetInclusivity, 20);
+      offsetInnovation = tween(offsetInnovation, 0);
+      offsetInitiative = tween(offsetInitiative, 0);
+      offsetWhoAmI = tween(offsetWhoAmI, 0);
+      offsetLogo = tween(offsetLogo, 0);
+    } else {
+      if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
+        offsetInclusivity = tween(offsetInclusivity, 0);
+        offsetInnovation = tween(offsetInnovation, 20);
+        offsetInitiative = tween(offsetInitiative, 0);
+        offsetWhoAmI = tween(offsetWhoAmI, 0);
+        offsetLogo = tween(offsetLogo, 0);
+      } else {
+        if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
+          offsetInclusivity = tween(offsetInclusivity, 0);
+          offsetInnovation = tween(offsetInnovation, 0);
+          offsetInitiative = tween(offsetInitiative, 20);
+          offsetWhoAmI = tween(offsetWhoAmI, 0);
+          offsetLogo = tween(offsetLogo, 0);
+        } else {
+          if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
+            offsetInclusivity = tween(offsetInclusivity, 0);
+            offsetInnovation = tween(offsetInnovation, 0);
+            offsetInitiative = tween(offsetInitiative, 0);
+            offsetWhoAmI = tween(offsetWhoAmI, 20);
+            offsetLogo = tween(offsetLogo, 0);
+          } else {
+            if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 20);
+            } else {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 0);
+            }
+          }
+        }
+      }
+    }
+
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      infoX = tween(infoX, 0.1 * width);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+  
+  if (level == "inclusivity2") {
+    //header
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefin);
+    textAlign(CENTER);
+    text("INCLUSIVITY", 0.9 * width, headerY + height/10 + offsetInclusivity);
+    text("INNOVATION", 0.7 * width, headerY + height/10 + offsetInnovation);
+    text("INITIATIVE", 0.5 * width, headerY + height/10 + offsetInitiative);
+    text("WHO AM I", 0.3 * width, headerY + height/10 + offsetWhoAmI);
+
+    tint(255, headerTransparency);
+    imageMode(CENTER);
+    image(logo, 0.1 * width, headerY + height/12 + offsetLogo, height/10, height/10);
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(50);
+    textFont(montserratBI);
+    textAlign(LEFT);
+    text("Routine Public Surveys", titleX, 0.3 * height);
+
+    //info
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(25);
+    textFont(montserrat);
+    textAlign(LEFT);
+    textWrap(WORD);
+    text("The most important people to SU aren't the president, or the room reps. The most important people to SU are you. Along with the SU Insiders Program, we’ll get feedback directly from everyday OSA students on events, along with your preferences on certain topics to help plan for future occasions.", infoX, 0.3 * height + 60, 0.4 * width);
+
+    textSize(30);
+    textFont(josefinItalic);
+    text("Direct feedback from YOU. \n\nEvents tailored to YOU. \n\nA Student's Union for YOU.", infoX + 0.4 * width + 50, 0.3 * height + 60, 0.4 * width);
 
     //footer
     tint(255, footerTransparency);
@@ -2061,7 +2240,7 @@ function mousePressed() {
   }
 }
 
-function mouseReleased() {
+function touchEnded() {
   if (isMobile == true) {
     if (level != "home" || millis() - millisMarker > 2000) {
       if (level == "mobileMenu") {
@@ -2122,6 +2301,19 @@ function mouseReleased() {
             }
             if (level == "mobileInnovation") {
               level = "mobileInnovation1";
+              levelSetup();
+            }
+            
+            if (level == "mobileInclusivity2") {
+              level = "mobileInclusivity3";
+              levelSetup();
+            }
+            if (level == "mobileInclusivity1") {
+              level = "mobileInclusivity2";
+              levelSetup();
+            }
+            if (level == "mobileInclusivity") {
+              level = "mobileInclusivity1";
               levelSetup();
             }
           }
