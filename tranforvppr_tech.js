@@ -2450,7 +2450,7 @@ function mousePressed() {
 }
 
 function touchEnded() {
-  if (isMobile == true && millis() - touchCooldown > 1000) {
+  if (isMobile == true && millis() - touchCooldown > 500) {
     touchCooldown = millis();
     if (level != "home" || millis() - millisMarker > 2000) {
       if (level == "mobileMenu") {
