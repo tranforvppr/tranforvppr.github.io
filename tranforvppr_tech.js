@@ -390,8 +390,8 @@ function levelSetup() {
     osaY = height;
   }
   
-  if (level == "mobileInclusitivity1") {
-    recentPage = "mobileInclusitivity1";
+  if (level == "mobileInclusivity1") {
+    recentPage = "mobileInclusivity1";
     easing = 0.08;
     millisMarker = millis();
     offsetLogo = 0;
@@ -404,8 +404,8 @@ function levelSetup() {
     infoX = width;
   }
   
-  if (level == "mobileInclusitivity2") {
-    recentPage = "mobileInclusitivity2";
+  if (level == "mobileInclusivity2") {
+    recentPage = "mobileInclusivity2";
     easing = 0.08;
     millisMarker = millis();
     offsetLogo = 0;
@@ -418,8 +418,8 @@ function levelSetup() {
     infoX = width;
   }
   
-  if (level == "mobileInclusitivity3") {
-    recentPage = "mobileInclusitivity3";
+  if (level == "mobileInclusivity3") {
+    recentPage = "mobileInclusivity3";
     easing = 0.08;
     millisMarker = millis();
     offsetLogo = 0;
@@ -544,7 +544,7 @@ function draw() {
     //footer
     /*tint(255, footerTransparency);
      imageMode(CENTER);
-     image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);*/
+     image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);*/
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -769,7 +769,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
@@ -898,7 +898,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -1000,7 +1000,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -1087,14 +1087,14 @@ function draw() {
 
     fill(255, 255, 255, bodyTransparency);
     noStroke();
-    textSize(20);
+    textSize(25);
     textFont(josefinItalic);
     textAlign(LEFT); //When Arthur speaks, it's as if the \nheavens themselves pause to listen.
     textWrap(WORD);
     text("''One of the most diligent \npeople I've ever worked with.''", 0.1 * width, 0.2 * height + 70, 0.8 * width);
     textSize(15);
     textFont(montserrat);
-    text("- Prabhleen Gill, Smile Club President", 0.1 * width, 0.2 * height + 120, 0.8 * width);
+    text("- Prabhleen Gill, Smile Club President", 0.1 * width, 0.2 * height + 130, 0.8 * width);
 
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
@@ -1145,11 +1145,11 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(18);
+    textSize(20);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
-    text("Do you want to see the OSA team dominate in badminton, yet you’re too busy to watch in person? With me as your VPPR, enjoy a new way to watch your classmates excel in events such as volleyball matches, SkillsCanada competitions, and music concerts! Your soccer games, debate competitions, Reach for the Top matches, and more will be recorded and broadcasted for students, staff, and family to cheer you on.", infoX, 0.2 * height + 80, 0.8 * width);
+    text("Do you want to see the OSA team dominate in badminton, yet you’re too busy to watch in person? With me as your VPPR, enjoy a new way to watch your classmates excel in events such as volleyball matches, SkillsCanada competitions, and music concerts! \n\nYour soccer games, debate competitions, Reach for the Top matches, and more will be recorded and broadcasted for students, staff, and family to cheer you on.", infoX, 0.2 * height + 80, 0.8 * width);
 
     //text("Everyone at OSA has exceptional talents, whether it’s in trivia, public speaking, or any other activity. Olympians Replay ensures that your time at Old Scona will be a lifetime memory by also letting you look back at archives of recordings and highlights of your skills being used in sports, debate, and so on. Olympians Replay is a hub for our school community to engage and strengthen our school community and pride. Wherever you are, Olympians Replay will be the channel to watch our school thrive from the talented students we have here!", infoX, 0.3 * height + 150, 0.8 * width);
     /*text("Everyone at OSA has exceptional talents,", infoX + 0.4 * width + 50, 0.3 * height - 35);
@@ -1206,7 +1206,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(16);
+    textSize(18);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -1255,7 +1255,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(16);
+    textSize(18);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -1302,7 +1302,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(16);
+    textSize(18);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -1311,7 +1311,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     headerY = tween(headerY, 0);
     headerTransparency = tween(headerTransparency, 255);
@@ -1378,7 +1378,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -1490,7 +1490,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -1592,7 +1592,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -1668,7 +1668,7 @@ function draw() {
     //title
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(50);
+    textSize(40);
     textFont(josefin);
     textAlign(LEFT);
     text("INNOVATION", titleX, 0.2 * height + 20);
@@ -1679,18 +1679,18 @@ function draw() {
 
     fill(255, 255, 255, bodyTransparency);
     noStroke();
-    textSize(20);
+    textSize(25);
     textFont(josefinItalic);
     textAlign(LEFT); //When Arthur speaks, it's as if the \nheavens themselves pause to listen.
     textWrap(WORD);
     text("''His ability to connect with everyone is unparalleled.''", 0.1 * width, 0.2 * height + 90, 0.8 * width);
     textSize(15);
     textFont(montserrat);
-    text("- Majd Abdalla, Reach for the Top Champion", 0.1 * width, 0.2 * height + 140, 0.8 * width);
+    text("- Majd Abdalla, Reach for the Top Champion", 0.1 * width, 0.2 * height + 150, 0.8 * width);
 
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
-    image(innovation, width/2, 0.7 * height, 0.6 * width, 0.6 * width);
+    image(innovation, width/2, 0.65 * height, 0.6 * width, 0.6 * width);
 
     //footer
     tint(255, footerTransparency);
@@ -1703,7 +1703,7 @@ function draw() {
     if (millis() - millisMarker < 2000) {
       titleX = tween(titleX, 0.1 * width);
       titleTransparency = tween(titleTransparency, 255);
-      underlineLength = titleTween(underlineLength, 350);
+      underlineLength = titleTween(underlineLength, 275);
     }
 
     if (millis() - millisMarker > 1000) {
@@ -1831,7 +1831,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(16);
+    textSize(18);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -1899,7 +1899,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -2006,7 +2006,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -2110,7 +2110,7 @@ function draw() {
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
-    image(clickIcon, 0.5 * width, 0.85 * height, height/20, height/20);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
       offsetInclusivity = tween(offsetInclusivity, 20);
@@ -2157,6 +2157,212 @@ function draw() {
         }
       }
     }
+
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      infoX = tween(infoX, 0.1 * width);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+  
+  if (level == "mobileInclusivity") {
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(40);
+    textFont(josefin);
+    textAlign(LEFT);
+    text("INCLUSIVITY", titleX, 0.2 * height + 20);
+
+    fill(255, titleTransparency);
+    noStroke();
+    rect(titleX, 0.2 * height + 40, underlineLength, 5);
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(25);
+    textFont(josefinItalic);
+    textAlign(LEFT); //When Arthur speaks, it's as if the \nheavens themselves pause to listen.
+    textWrap(WORD);
+    text("''He makes everyone feel seem and valued.''", 0.1 * width, 0.2 * height + 90, 0.8 * width);
+    textSize(15);
+    textFont(montserrat);
+    text("- Aliyah Salami, BSA Exec", 0.1 * width, 0.2 * height + 150, 0.8 * width);
+
+    /*tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(innovation, width/2, 0.65 * height, 0.6 * width, 0.6 * width);*/
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      underlineLength = titleTween(underlineLength, 275);
+    }
+
+    if (millis() - millisMarker > 1000) {
+      bodyTransparency = tween(bodyTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+
+  if (level == "mobileInclusivity1") {
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserratBI);
+    textAlign(LEFT);
+    text("Community \nCollaboration \nin COMSU", titleX, 0.2 * height);
+
+    //info
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(18);
+    textFont(montserrat);
+    textAlign(LEFT);
+    textWrap(WORD);
+    text("This year, a record-breaking number of creative individuals applied to COMSU in hopes of their talents being able to serve SU’s advertisements, promotions, and digital projects. Only 6 of these applicants were selected to manage the digital aspect of the whole student body. \n\nThis system blocks countless artists and developers from showcasing their ability to help out the school in advertisements and promotions.", infoX, 0.2 * height + 120, 0.8 * width);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      infoX = tween(infoX, 0.1 * width);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+  
+  if (level == "mobileInclusivity2") {
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserratBI);
+    textAlign(LEFT);
+    text("Community \nCollaboration \nin COMSU (Cont'd)", titleX, 0.2 * height);
+
+    //info
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(18);
+    textFont(montserrat);
+    textAlign(LEFT);
+    textWrap(WORD);
+    text("While members of COMSU will continue to overlook everything, community-made designs would allow for: \n\n - More opportunities to volunteer in the community (Can be used for resumes and applications!) \n\n - Less stress and pressure among members of COMSU and SU", infoX, 0.2 * height + 120, 0.8 * width);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      infoX = tween(infoX, 0.1 * width);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+  
+  if (level == "mobileInclusivity3") {
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserratBI);
+    textAlign(LEFT);
+    text("Routine Public Surveys", titleX, 0.2 * height);
+
+    //info
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(18);
+    textFont(montserrat);
+    textAlign(LEFT);
+    textWrap(WORD);
+    text("The most important people to SU aren't the president, or the room reps. The most important people to SU are you. Along with the SU Insiders Program, we’ll get feedback directly from everyday OSA students on events, along with your preferences on certain topics to help plan for future occasions.", infoX, 0.2 * height + 40, 0.8 * width);
+
+    textSize(20);
+    textFont(josefinItalic);
+    text("Direct feedback from YOU. \n\nEvents tailored to YOU. \n\nA Student's Union for YOU.", infoX, 0.2 * height + 250, 0.8 * width);
+    
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
 
     headerY = tween(headerY, 0);
     headerTransparency = tween(headerTransparency, 255);
