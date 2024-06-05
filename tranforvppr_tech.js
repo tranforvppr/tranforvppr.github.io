@@ -344,7 +344,7 @@ function levelSetup() {
     footerTransparency = 0;
     bodyTransparency = 0;
   }
-  
+
   if (level == "inclusivity1") {
     easing = 0.08;
     millisMarker = millis();
@@ -357,7 +357,7 @@ function levelSetup() {
     bodyTransparency = 0;
     infoX = width;
   }
-  
+
   if (level == "inclusivity2") {
     easing = 0.08;
     millisMarker = millis();
@@ -370,7 +370,7 @@ function levelSetup() {
     bodyTransparency = 0;
     infoX = width;
   }
-  
+
   if (level == "mobileInclusivity") {
     recentPage = "mobileInclusivity";
     easing = 0.1;
@@ -390,7 +390,7 @@ function levelSetup() {
     bodyTransparency = 0;
     osaY = height;
   }
-  
+
   if (level == "mobileInclusivity1") {
     recentPage = "mobileInclusivity1";
     easing = 0.08;
@@ -404,7 +404,7 @@ function levelSetup() {
     bodyTransparency = 0;
     infoX = width;
   }
-  
+
   if (level == "mobileInclusivity2") {
     recentPage = "mobileInclusivity2";
     easing = 0.08;
@@ -418,7 +418,7 @@ function levelSetup() {
     bodyTransparency = 0;
     infoX = width;
   }
-  
+
   if (level == "mobileInclusivity3") {
     recentPage = "mobileInclusivity3";
     easing = 0.08;
@@ -467,7 +467,7 @@ function setup() {
     isMobile = true;
     level = "mobileHome";
   }
-  
+
   touchCooldown = millis();
 
   cursorX = width/2;
@@ -1897,7 +1897,7 @@ function draw() {
     textSize(30);
     textFont(montserrat);
     text("- Aliyah Salami, BSA Exec", 0.1 * width, 0.3 * height + 150);
-    
+
     tint(255, 227, 227, bodyTransparency);
     imageMode(CENTER);
     image(inclusivity, 0.8 * width, 0.55 * height, height/1.5, height/1.5);
@@ -1973,7 +1973,7 @@ function draw() {
       footerTransparency = tween(footerTransparency, 0);
     }
   }
-  
+
   if (level == "inclusivity1") {
     //header
     fill(255, 255, 255, headerTransparency);
@@ -2075,7 +2075,7 @@ function draw() {
       footerTransparency = tween(footerTransparency, 0);
     }
   }
-  
+
   if (level == "inclusivity2") {
     //header
     fill(255, 255, 255, headerTransparency);
@@ -2179,7 +2179,7 @@ function draw() {
       footerTransparency = tween(footerTransparency, 0);
     }
   }
-  
+
   if (level == "mobileInclusivity") {
     //menu
     fill(255, 255, 255, headerTransparency);
@@ -2287,7 +2287,7 @@ function draw() {
       footerTransparency = tween(footerTransparency, 0);
     }
   }
-  
+
   if (level == "mobileInclusivity2") {
     //menu
     fill(255, 255, 255, headerTransparency);
@@ -2334,7 +2334,7 @@ function draw() {
       footerTransparency = tween(footerTransparency, 0);
     }
   }
-  
+
   if (level == "mobileInclusivity3") {
     //menu
     fill(255, 255, 255, headerTransparency);
@@ -2364,7 +2364,7 @@ function draw() {
     textSize(20);
     textFont(josefinItalic);
     text("Direct feedback from YOU. \n\nEvents tailored to YOU. \n\nA Student's Union for YOU.", infoX, 0.2 * height + 300, 0.8 * width);
-    
+
     //footer
     tint(255, footerTransparency);
     imageMode(CENTER);
@@ -2436,7 +2436,7 @@ function mousePressed() {
                     level = "innovation1";
                     levelSetup();
                   }
-                  
+
                   if (level == "inclusivity1") {
                     level = "inclusivity2";
                     levelSetup();
@@ -2449,6 +2449,43 @@ function mousePressed() {
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+function mouseWheel() {
+  if (isMobile == false && millis() - touchCooldown > 1000 && abs(event.deltaY) > 100) {
+    touchCooldown = millis();
+    if (level != "home" || millis() - millisMarker > 2000) {
+
+      if (millis() - millisMarker > 1000) {
+        if (level == "initiative1") {
+          level = "initiative2";
+          levelSetup();
+        }
+        if (level == "initiative") {
+          level = "initiative1";
+          levelSetup();
+        }
+
+        if (level == "innovation1") {
+          level = "innovation2";
+          levelSetup();
+        }
+        if (level == "innovation") {
+          level = "innovation1";
+          levelSetup();
+        }
+
+        if (level == "inclusivity1") {
+          level = "inclusivity2";
+          levelSetup();
+        }
+        if (level == "inclusivity") {
+          level = "inclusivity1";
+          levelSetup();
         }
       }
     }
@@ -2519,7 +2556,7 @@ function touchEnded() {
               level = "mobileInnovation1";
               levelSetup();
             }
-            
+
             if (level == "mobileInclusivity2") {
               level = "mobileInclusivity3";
               levelSetup();
