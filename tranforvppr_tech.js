@@ -1,5 +1,4 @@
 //big ballz mrow :3
-//abcdefg
 let level;
 let easing;
 let millisMarker;
@@ -428,7 +427,7 @@ function levelSetup() {
     titleTransparency = 0;
     offsetTitle = height/2;
     underlineLength = 0;
-    hasScrolled = false;
+    hasScrolled = true;
     bodyTransparency = 0;
     infoX = width;
   }
@@ -1095,11 +1094,11 @@ function draw() {
     text("''One of the most diligent \npeople I've ever worked with.''", 0.1 * width, 0.2 * height + 70, 0.8 * width);
     textSize(15);
     textFont(montserrat);
-    text("- Prabhleen Gill, Smile Club President", 0.1 * width, 0.2 * height + 130, 0.8 * width);
+    text("- Prabhleen Gill, Smile Club President", 0.1 * width, 0.2 * height + 160, 0.8 * width);
 
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
-    image(initiative, width/2, 0.65 * height, 0.7 * width, 0.7 * width);
+    image(initiative, width/2, 0.65 * height, 0.5 * width, 0.5 * width);
 
     //footer
     tint(255, footerTransparency);
@@ -1146,7 +1145,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(20);
+    textSize(18);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -1207,7 +1206,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(18);
+    textSize(16);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -1691,7 +1690,7 @@ function draw() {
 
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
-    image(innovation, width/2, 0.65 * height, 0.6 * width, 0.6 * width);
+    image(innovation, width/2, 0.65 * height, 0.5 * width, 0.5 * width);
 
     //footer
     tint(255, footerTransparency);
@@ -2345,7 +2344,7 @@ function draw() {
     textSize(30);
     textFont(montserratBI);
     textAlign(LEFT);
-    text("Routine Public Surveys", titleX, 0.2 * height);
+    text("Routine Public \nSurveys", titleX, 0.2 * height);
 
     //info
     fill(255, 255, 255, titleTransparency);
@@ -2354,11 +2353,11 @@ function draw() {
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
-    text("The most important people to SU aren't the president, or the room reps. The most important people to SU are you. Along with the SU Insiders Program, we’ll get feedback directly from everyday OSA students on events, along with your preferences on certain topics to help plan for future occasions.", infoX, 0.2 * height + 40, 0.8 * width);
+    text("The most important people to SU aren't the president, or the room reps. The most important people to SU are you. Along with the SU Insiders Program, we’ll get feedback directly from everyday OSA students on events, along with your preferences on certain topics to help plan for future occasions.", infoX, 0.2 * height + 80, 0.8 * width);
 
     textSize(20);
     textFont(josefinItalic);
-    text("Direct feedback from YOU. \n\nEvents tailored to YOU. \n\nA Student's Union for YOU.", infoX, 0.2 * height + 250, 0.8 * width);
+    text("Direct feedback from YOU. \n\nEvents tailored to YOU. \n\nA Student's Union for YOU.", infoX, 0.2 * height + 300, 0.8 * width);
     
     //footer
     tint(255, footerTransparency);
