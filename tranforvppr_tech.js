@@ -446,6 +446,7 @@ function preload() {
   osa = loadImage('assets/osa.png');
   initiative = loadImage('assets/initiative.png');
   innovation = loadImage('assets/innovation.png');
+  inclusivity = loadImage('assets/inclusivity.png');
   website = loadImage ('assets/website.png');
 }
 
@@ -1896,6 +1897,10 @@ function draw() {
     textSize(30);
     textFont(montserrat);
     text("- Aliyah Salami, BSA Exec", 0.1 * width, 0.3 * height + 150);
+    
+    tint(255, 227, 227, bodyTransparency);
+    imageMode(CENTER);
+    image(inclusivity, 0.8 * width, 0.55 * height, height/1.5, height/1.5);
 
     //footer
     tint(255, footerTransparency);
@@ -2207,9 +2212,9 @@ function draw() {
     textFont(montserrat);
     text("- Aliyah Salami, BSA Exec", 0.1 * width, 0.2 * height + 150, 0.8 * width);
 
-    /*tint(255, 200, 200, bodyTransparency);
+    tint(255, 227, 227, bodyTransparency);
     imageMode(CENTER);
-    image(innovation, width/2, 0.65 * height, 0.6 * width, 0.6 * width);*/
+    image(inclusivity, width/2, 0.65 * height, 0.5 * width, 0.5 * width);
 
     //footer
     tint(255, footerTransparency);
