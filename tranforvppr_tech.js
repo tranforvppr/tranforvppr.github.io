@@ -451,11 +451,11 @@ function preload() {
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight + 100);
 }
 
 function setup() {
-  renderer = createCanvas(windowWidth, windowHeight);
+  renderer = createCanvas(windowWidth, windowHeight + 100);
   renderer.canvas.style.display = 'block';
   document.title = "The Tran Plan";
 
