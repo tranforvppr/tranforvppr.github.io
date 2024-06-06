@@ -1340,24 +1340,24 @@ function draw() {
     imageMode(CENTER);
     image(clickIcon, 0.5 * width, osaY + width/4 + 10, height/20, height/20);
 
-    if (millis() - millisMarker < 3000) {
+    if (millis() - millisMarker < 2500) {
       offsetTitle = tween(offsetTitle, 0);
       titleTransparency = tween(titleTransparency, 255);
     }
 
-    if (millis() - millisMarker > 3500 && hasScrolled == false) {
+    if (millis() - millisMarker > 3000 && hasScrolled == false) {
       footerTransparency = tween(footerTransparency, 255);
     } else {
       footerTransparency = tween(footerTransparency, 0);
     }
 
-    if (millis() - millisMarker > 3000) {
+    if (millis() - millisMarker > 2500) {
       titleX = tween(titleX, 0);
       titleTransparency = tween(titleTransparency, 0);
       underlineLength = tween(underlineLength, 0);
     }
 
-    if (millis() - millisMarker > 3500) {
+    if (millis() - millisMarker > 3000) {
       osaY = tween(osaY, 0.2 * height + 350);
       bodyTransparency = tween(bodyTransparency, 255);
     }
