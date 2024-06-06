@@ -174,6 +174,69 @@ function levelSetup() {
     arthurSize = 0;
   }
 
+  if (level == "mobileWhoami") {
+    recentPage = "mobileWhoami";
+    easing = 0.1;
+    millisMarker = millis();
+    headerY = -windowHeight/10
+      headerTransparency = 255;
+    offsetWhoAmI = 0;
+    offsetInitiative = 0;
+    offsetInnovation = 0;
+    offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaY = height;
+  }
+
+  if (level == "mobileWhoami1") {
+    recentPage = "mobileWhoami1";
+    easing = 0.1;
+    millisMarker = millis();
+    headerY = -windowHeight/10
+      headerTransparency = 255;
+    offsetWhoAmI = 0;
+    offsetInitiative = 0;
+    offsetInnovation = 0;
+    offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaY = height;
+  }
+
+  if (level == "mobileWhoami2") {
+    recentPage = "mobileWhoami2";
+    easing = 0.1;
+    millisMarker = millis();
+    headerY = -windowHeight/10
+      headerTransparency = 255;
+    offsetWhoAmI = 0;
+    offsetInitiative = 0;
+    offsetInnovation = 0;
+    offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = true;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaY = height;
+  }
+
   if (level == "initiative") {
     easing = 0.1;
     millisMarker = millis();
@@ -821,8 +884,8 @@ function draw() {
     textSize(40);
     textFont(josefinItalic);
     textAlign(LEFT); //When Arthur speaks, it's as if the \nheavens themselves pause to listen.
-    text("You are the building blocks of OSA.", 0.1 * width, 0.4 * height + 160);
-    
+    text("You are the building blocks of OSA. \n[Scroll/Click to continue]", 0.1 * width, 0.4 * height + 160);
+
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
     image(spinningLego, 0.8 * width, osaY, 16 * height/18, height/2);
@@ -1093,12 +1156,12 @@ function draw() {
     text("I am", 0.1 * width, 0.3 * height + 300, 0.5 * width);
     textFont(josefinItalic);
     text("RESILIENT.", 0.1 * width + 80, 0.3 * height + 300, 0.5 * width);
-    
+
     textFont(montserrat);
     text("I am", 0.1 * width, 0.3 * height + 350, 0.5 * width);
     textFont(josefinItalic);
     text("DEDICATED.", 0.1 * width + 80, 0.3 * height + 350, 0.5 * width);
-    
+
     textFont(montserrat);
     text("I am", 0.1 * width, 0.3 * height + 400, 0.5 * width);
     textFont(josefinItalic);
@@ -1106,7 +1169,7 @@ function draw() {
 
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
-    image(processing, osaX, 0.6 * height, arthurSize, arthurSize);
+    image(processing, osaX, 0.55 * height, arthurSize, arthurSize);
 
     //footer
     tint(255, footerTransparency);
@@ -1158,7 +1221,7 @@ function draw() {
         }
       }
     }
-    
+
     headerY = tween(headerY, 0);
     headerTransparency = tween(headerTransparency, 255);
 
@@ -1172,6 +1235,173 @@ function draw() {
     arthurSize = tween(arthurSize, 0.7 * height);
 
     if (millis() - millisMarker > 3500 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+
+  if (level == "mobileWhoami") {
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("Let's talk about you first. \nThis is you.", titleX, 0.3 * height, 0.8 * width);
+
+    /*fill(255, titleTransparency);
+     noStroke();
+     rect(titleX, 0.3 * height + 20, underlineLength, 5);*/
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefinItalic);
+    textAlign(LEFT); //When Arthur speaks, it's as if the \nheavens themselves pause to listen.
+    text("You are the building blocks of OSA. \n[Tap to continue]", 0.1 * width, 0.3 * height + 120, 0.8 * width);
+
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(spinningLego, 0.75 * width, osaY, 16 * width/18, width/2);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      osaY = tween(osaY, 0.7 * height);
+    }
+
+    if (millis() - millisMarker > 1000) {
+      bodyTransparency = tween(bodyTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+
+  if (level == "mobileWhoami1") {
+
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("Everything an SU exec does is for the betterment of YOU.", titleX, 0.3 * height, 0.8 * width);
+
+    textFont(josefinItalic);
+    textSize(20);
+    text("That's why I'm running.", titleX, 0.3 * height + 120, 0.8 * width);
+
+    //body
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(50);
+    textFont(josefinItalic);
+    textAlign(LEFT);
+    text("Arthur Tran", 0.1 * width, 0.2 * height);
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(20);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("You've probably heard my name countless times. I'm a Smile Club Executive, a SET Mentor, and the runner-up Ignite-A-Thon Team Captain. \n\nWith me as your VPPR, you'll ''click in'' with SU better.", 0.1 * width, 0.2 * height + 50, 0.8 * width);
+
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(arthur, width/2, osaY, width/2, width/2);
+    
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, osaY + width/4 + 10, height/20, height/20);
+
+    if (millis() - millisMarker < 3000) {
+      offsetTitle = tween(offsetTitle, 0);
+      titleTransparency = tween(titleTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 3500 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+
+    if (millis() - millisMarker > 3000) {
+      titleX = tween(titleX, 0);
+      titleTransparency = tween(titleTransparency, 0);
+      underlineLength = tween(underlineLength, 0);
+    }
+
+    if (millis() - millisMarker > 3500) {
+      osaY = tween(osaY, 0.2 * height + 350);
+      bodyTransparency = tween(bodyTransparency, 255);
+    }
+  }
+
+  if (level == "mobileWhoami2") {
+
+    //menu
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    rect(0.8 * width, 0.1 * width, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 15, 0.1 * width, 5);
+    rect(0.8 * width, 0.1 * width + 30, 0.1 * width, 5);
+
+    //body
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(50);
+    textFont(josefinItalic);
+    textAlign(LEFT);
+    text("Why Website?", 0.1 * width, 0.2 * height + 50);
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(20);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("I made this entirely with one of the worst programming tools ever, PROCESSING. With resilience and dedication, no other candidate has the same level of determination to help the school other than me.", 0.1 * width, 0.2 * height + 100, 0.8 * width);
+
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(processing, width/2, osaY, width/2, width/2);
+    
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    offsetTitle = tween(offsetTitle, 0);
+    titleTransparency = tween(titleTransparency, 255);
+    osaY = tween(osaY, 0.2 * height + 350);
+    bodyTransparency = tween(bodyTransparency, 255);
+    
+    if (millis() - millisMarker > 2000 && hasScrolled == false) {
       footerTransparency = tween(footerTransparency, 255);
     } else {
       footerTransparency = tween(footerTransparency, 0);
@@ -1757,7 +1987,7 @@ function draw() {
     //info
     fill(255, 255, 255, titleTransparency);
     noStroke();
-    textSize(18);
+    textSize(17);
     textFont(montserrat);
     textAlign(LEFT);
     textWrap(WORD);
@@ -2850,7 +3080,7 @@ function draw() {
 
 function mousePressed() {
   if (isMobile == false) {
-    if (level != "home" || millis() - millisMarker > 2000) {
+    if ((level != "home" && level != "whoami1") || millis() - millisMarker > 2000) {
       if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
         level = "inclusivity";
         levelSetup();
@@ -2973,7 +3203,7 @@ function touchEnded() {
           levelSetup();
         }
         if (mouseY > 0.2 * height && mouseY < 0.4 * height && mouseX < 0.7 * width) {
-          level = "mobileWhoAmI";
+          level = "mobileWhoami";
           levelSetup();
         }
         if (mouseY > 0.4 * height && mouseY < 0.6 * height && mouseX < 0.7 * width) {
@@ -2998,6 +3228,15 @@ function touchEnded() {
           levelSetup();
         } else {
           if (millis() - millisMarker > 1000) {
+            if (level == "mobileWhoami1") {
+              level = "mobileWhoami2";
+              levelSetup();
+            }
+            if (level == "mobileWhoami") {
+              level = "mobileWhoami1";
+              levelSetup();
+            }
+
             if (level == "mobileInitiative3") {
               level = "mobileInitiative4";
               levelSetup();
