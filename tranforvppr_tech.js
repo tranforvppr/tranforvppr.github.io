@@ -1398,7 +1398,7 @@ function draw() {
 
     offsetTitle = tween(offsetTitle, 0);
     titleTransparency = tween(titleTransparency, 255);
-    osaY = tween(osaY, 0.2 * height + 350);
+    osaY = tween(osaY, 0.2 * height + 375);
     bodyTransparency = tween(bodyTransparency, 255);
     
     if (millis() - millisMarker > 2000 && hasScrolled == false) {
