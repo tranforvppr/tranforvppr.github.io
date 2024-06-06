@@ -23,6 +23,7 @@ let underlineLength;
 let bodyTransparency;
 let osaX;
 let osaY;
+let arthurSize;
 
 let infoX;
 
@@ -39,6 +40,9 @@ let initiative;
 let innovation;
 let inclusivity;
 let website;
+let arthur;
+let processing;
+let spinningLego;
 
 let cursorX;
 let cursorY;
@@ -114,6 +118,60 @@ function levelSetup() {
     millisMarker = millis();
     titleX = 0;
     titleTransparency = 0;
+  }
+
+  if (level == "whoami") {
+    easing = 0.1;
+    millisMarker = millis();
+    offsetLogo = 0;
+    titleX = 0;
+    titleTransparency = 0;
+    offsetTitle = height/2;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaY = height;
+  }
+
+  if (level == "whoami1") {
+    easing = 0.1;
+    millisMarker = millis();
+    headerY = -windowHeight/10
+      headerTransparency = 0;
+    offsetWhoAmI = 0;
+    offsetInitiative = 0;
+    offsetInnovation = 0;
+    offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = false;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaX = width;
+    arthurSize = 0;
+  }
+
+  if (level == "whoami2") {
+    easing = 0.1;
+    millisMarker = millis();
+    offsetWhoAmI = 0;
+    offsetInitiative = 0;
+    offsetInnovation = 0;
+    offsetInclusivity = 0;
+    offsetLogo = 0;
+    offsetTitle = height/2;
+    titleX = 0.1 * width;
+    titleTransparency = 0;
+    underlineLength = 0;
+    hasScrolled = true;
+    footerTransparency = 0;
+    bodyTransparency = 0;
+    osaX = width;
+    arthurSize = 0;
   }
 
   if (level == "initiative") {
@@ -447,7 +505,10 @@ function preload() {
   initiative = loadImage('assets/initiative.png');
   innovation = loadImage('assets/innovation.png');
   inclusivity = loadImage('assets/inclusivity.png');
-  website = loadImage ('assets/website.png');
+  website = loadImage('assets/website.png');
+  arthur = loadImage('assets/arthur.png');
+  processing = loadImage('assets/processing.png');
+  spinningLego = loadImage('assets/spinningLego.gif');
 }
 
 function windowResized() {
@@ -478,8 +539,9 @@ function setup() {
 
 function draw() {
   background(238, 165, 166)
+    textWrap(WORD);
 
-    tint(255);
+  tint(255);
   imageMode(CORNER);
   image(gradient, 0, 0, width, height);
 
@@ -723,6 +785,397 @@ function draw() {
 
     titleX = tween(titleX, 0.1 * width);
     titleTransparency = tween(titleTransparency, 255);
+  }
+
+  if (level == "whoami") {
+    //header
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefin);
+    textAlign(CENTER);
+    text("INCLUSIVITY", 0.9 * width, headerY + height/10 + offsetInclusivity);
+    text("INNOVATION", 0.7 * width, headerY + height/10 + offsetInnovation);
+    text("INITIATIVE", 0.5 * width, headerY + height/10 + offsetInitiative);
+    text("WHO AM I", 0.3 * width, headerY + height/10 + offsetWhoAmI);
+
+    tint(255, headerTransparency);
+    imageMode(CENTER);
+    image(logo, 0.1 * width, headerY + height/12 + offsetLogo, height/10, height/10);
+
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(60);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("Let's talk about you first. \nThis is you.", titleX, 0.4 * height);
+
+    /*fill(255, titleTransparency);
+     noStroke();
+     rect(titleX, 0.3 * height + 20, underlineLength, 5);*/
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(40);
+    textFont(josefinItalic);
+    textAlign(LEFT); //When Arthur speaks, it's as if the \nheavens themselves pause to listen.
+    text("You are the building blocks of OSA.", 0.1 * width, 0.4 * height + 160);
+    
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(spinningLego, 0.8 * width, osaY, 16 * height/18, height/2);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+
+    if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
+      offsetInclusivity = tween(offsetInclusivity, 20);
+      offsetInnovation = tween(offsetInnovation, 0);
+      offsetInitiative = tween(offsetInitiative, 0);
+      offsetWhoAmI = tween(offsetWhoAmI, 0);
+      offsetLogo = tween(offsetLogo, 0);
+    } else {
+      if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
+        offsetInclusivity = tween(offsetInclusivity, 0);
+        offsetInnovation = tween(offsetInnovation, 20);
+        offsetInitiative = tween(offsetInitiative, 0);
+        offsetWhoAmI = tween(offsetWhoAmI, 0);
+        offsetLogo = tween(offsetLogo, 0);
+      } else {
+        if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
+          offsetInclusivity = tween(offsetInclusivity, 0);
+          offsetInnovation = tween(offsetInnovation, 0);
+          offsetInitiative = tween(offsetInitiative, 20);
+          offsetWhoAmI = tween(offsetWhoAmI, 0);
+          offsetLogo = tween(offsetLogo, 0);
+        } else {
+          if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
+            offsetInclusivity = tween(offsetInclusivity, 0);
+            offsetInnovation = tween(offsetInnovation, 0);
+            offsetInitiative = tween(offsetInitiative, 0);
+            offsetWhoAmI = tween(offsetWhoAmI, 20);
+            offsetLogo = tween(offsetLogo, 0);
+          } else {
+            if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 20);
+            } else {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 0);
+            }
+          }
+        }
+      }
+    }
+
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+
+    if (millis() - millisMarker < 2000) {
+      titleX = tween(titleX, 0.1 * width);
+      titleTransparency = tween(titleTransparency, 255);
+      osaY = tween(osaY, 0.5 * height);
+    }
+
+    if (millis() - millisMarker > 1000) {
+      bodyTransparency = tween(bodyTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 1000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+  }
+
+  if (level == "whoami1") {
+
+    /*fill(0);
+     stroke(255);
+     strokeWeight(1);
+     rect(0.8 * width, headerY, 0.2 * width, height/5);
+     rect(0.6 * width, headerY, 0.2 * width, height/5);
+     rect(0.4 * width, headerY, 0.2 * width, height/5);
+     rect(0.2 * width, headerY, 0.2 * width, height/5);
+     rect(0, headerY, 0.2 * width, height/5);*/
+
+    //header
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefin);
+    textAlign(CENTER);
+    text("INCLUSIVITY", 0.9 * width, headerY + height/10 + offsetInclusivity);
+    text("INNOVATION", 0.7 * width, headerY + height/10 + offsetInnovation);
+    text("INITIATIVE", 0.5 * width, headerY + height/10 + offsetInitiative);
+    text("WHO AM I", 0.3 * width, headerY + height/10 + offsetWhoAmI);
+
+    tint(255, headerTransparency);
+    imageMode(CENTER);
+    image(logo, 0.1 * width, headerY + height/12 + offsetLogo, height/10, height/10);
+
+    //title
+    fill(255, 255, 255, titleTransparency);
+    noStroke();
+    textSize(60);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("Everything an SU exec does is \nfor the betterment of YOU.", titleX, 0.4 * height + offsetTitle);
+
+    textFont(josefinItalic);
+    text("That's why I'm running.", titleX, 0.4 * height + offsetTitle + 200);
+
+    /*fill(255, titleTransparency);
+     noStroke();
+     rect(titleX, 0.4 * height + 160, underlineLength, 5);*/
+
+    //body
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(80);
+    textFont(josefinItalic);
+    textAlign(LEFT);
+    text("Arthur Tran", 0.1 * width, 0.3 * height + 25);
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("You've probably heard my name countless times. I'm a Smile Club Executive, a SET Mentor, and the runner-up Ignite-A-Thon Team Captain. \n\nWith me as your VPPR, you'll ''click in'' with SU better.", 0.1 * width, 0.3 * height + 100, 0.5 * width);
+
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(arthur, osaX, 0.6 * height, arthurSize, arthurSize);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
+      offsetInclusivity = tween(offsetInclusivity, 20);
+      offsetInnovation = tween(offsetInnovation, 0);
+      offsetInitiative = tween(offsetInitiative, 0);
+      offsetWhoAmI = tween(offsetWhoAmI, 0);
+      offsetLogo = tween(offsetLogo, 0);
+    } else {
+      if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
+        offsetInclusivity = tween(offsetInclusivity, 0);
+        offsetInnovation = tween(offsetInnovation, 20);
+        offsetInitiative = tween(offsetInitiative, 0);
+        offsetWhoAmI = tween(offsetWhoAmI, 0);
+        offsetLogo = tween(offsetLogo, 0);
+      } else {
+        if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
+          offsetInclusivity = tween(offsetInclusivity, 0);
+          offsetInnovation = tween(offsetInnovation, 0);
+          offsetInitiative = tween(offsetInitiative, 20);
+          offsetWhoAmI = tween(offsetWhoAmI, 0);
+          offsetLogo = tween(offsetLogo, 0);
+        } else {
+          if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
+            offsetInclusivity = tween(offsetInclusivity, 0);
+            offsetInnovation = tween(offsetInnovation, 0);
+            offsetInitiative = tween(offsetInitiative, 0);
+            offsetWhoAmI = tween(offsetWhoAmI, 20);
+            offsetLogo = tween(offsetLogo, 0);
+          } else {
+            if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 20);
+            } else {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 0);
+            }
+          }
+        }
+      }
+    }
+
+    if (millis() - millisMarker < 3000) {
+      offsetTitle = tween(offsetTitle, 0);
+      titleTransparency = tween(titleTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 1000 && millis() - millisMarker < 3000) {
+      underlineLength = titleTween(underlineLength, 400);
+    }
+
+    if (millis() - millisMarker > 2000 && millis() - millisMarker < 3000) {
+      headerY = tween(headerY, 0);
+      headerTransparency = tween(headerTransparency, 255);
+    }
+
+    if (millis() - millisMarker > 3000 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
+
+    if (millis() - millisMarker > 3000) {
+      titleX = tween(titleX, 0);
+      titleTransparency = tween(titleTransparency, 0);
+      underlineLength = tween(underlineLength, 0);
+    }
+
+    if (millis() - millisMarker > 3500) {
+      osaX = tween(osaX, 0.8 * width);
+      bodyTransparency = tween(bodyTransparency, 255);
+      arthurSize = tween(arthurSize, 0.7 * height);
+    }
+  }
+
+  if (level == "whoami2") {
+
+    /*fill(0);
+     stroke(255);
+     strokeWeight(1);
+     rect(0.8 * width, headerY, 0.2 * width, height/5);
+     rect(0.6 * width, headerY, 0.2 * width, height/5);
+     rect(0.4 * width, headerY, 0.2 * width, height/5);
+     rect(0.2 * width, headerY, 0.2 * width, height/5);
+     rect(0, headerY, 0.2 * width, height/5);*/
+
+    //header
+    fill(255, 255, 255, headerTransparency);
+    noStroke();
+    textSize(20);
+    textFont(josefin);
+    textAlign(CENTER);
+    text("INCLUSIVITY", 0.9 * width, headerY + height/10 + offsetInclusivity);
+    text("INNOVATION", 0.7 * width, headerY + height/10 + offsetInnovation);
+    text("INITIATIVE", 0.5 * width, headerY + height/10 + offsetInitiative);
+    text("WHO AM I", 0.3 * width, headerY + height/10 + offsetWhoAmI);
+
+    tint(255, headerTransparency);
+    imageMode(CENTER);
+    image(logo, 0.1 * width, headerY + height/12 + offsetLogo, height/10, height/10);
+
+    /*fill(255, titleTransparency);
+     noStroke();
+     rect(titleX, 0.4 * height + 160, underlineLength, 5);*/
+
+    //body
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(80);
+    textFont(josefinItalic);
+    textAlign(LEFT);
+    text("Why a website?", 0.1 * width, 0.3 * height + 25);
+
+    fill(255, 255, 255, bodyTransparency);
+    noStroke();
+    textSize(30);
+    textFont(montserrat);
+    textAlign(LEFT);
+    text("I made this entirely with one of the worst programming tools ever, PROCESSING. No other candidate has the same level of determination to help the school other than me.", 0.1 * width, 0.3 * height + 100, 0.5 * width);
+
+    textFont(montserrat);
+    text("I am", 0.1 * width, 0.3 * height + 300, 0.5 * width);
+    textFont(josefinItalic);
+    text("RESILIENT.", 0.1 * width + 80, 0.3 * height + 300, 0.5 * width);
+    
+    textFont(montserrat);
+    text("I am", 0.1 * width, 0.3 * height + 350, 0.5 * width);
+    textFont(josefinItalic);
+    text("DEDICATED.", 0.1 * width + 80, 0.3 * height + 350, 0.5 * width);
+    
+    textFont(montserrat);
+    text("I am", 0.1 * width, 0.3 * height + 400, 0.5 * width);
+    textFont(josefinItalic);
+    text("THE TRAN PLAN.", 0.1 * width + 80, 0.3 * height + 400, 0.5 * width);
+
+    tint(255, 200, 200, bodyTransparency);
+    imageMode(CENTER);
+    image(processing, osaX, 0.6 * height, arthurSize, arthurSize);
+
+    //footer
+    tint(255, footerTransparency);
+    imageMode(CENTER);
+    image(clickIcon, 0.5 * width, 0.9 * height, height/20, height/20);
+
+    if (mouseX > 0.8 * width && mouseX < 1.0 * width && mouseY < headerY + height/5) {
+      offsetInclusivity = tween(offsetInclusivity, 20);
+      offsetInnovation = tween(offsetInnovation, 0);
+      offsetInitiative = tween(offsetInitiative, 0);
+      offsetWhoAmI = tween(offsetWhoAmI, 0);
+      offsetLogo = tween(offsetLogo, 0);
+    } else {
+      if (mouseX > 0.6 * width && mouseX < 0.8 * width && mouseY < headerY + height/5) {
+        offsetInclusivity = tween(offsetInclusivity, 0);
+        offsetInnovation = tween(offsetInnovation, 20);
+        offsetInitiative = tween(offsetInitiative, 0);
+        offsetWhoAmI = tween(offsetWhoAmI, 0);
+        offsetLogo = tween(offsetLogo, 0);
+      } else {
+        if (mouseX > 0.4 * width && mouseX < 0.6 * width && mouseY < headerY + height/5) {
+          offsetInclusivity = tween(offsetInclusivity, 0);
+          offsetInnovation = tween(offsetInnovation, 0);
+          offsetInitiative = tween(offsetInitiative, 20);
+          offsetWhoAmI = tween(offsetWhoAmI, 0);
+          offsetLogo = tween(offsetLogo, 0);
+        } else {
+          if (mouseX > 0.2 * width && mouseX < 0.4 * width && mouseY < headerY + height/5) {
+            offsetInclusivity = tween(offsetInclusivity, 0);
+            offsetInnovation = tween(offsetInnovation, 0);
+            offsetInitiative = tween(offsetInitiative, 0);
+            offsetWhoAmI = tween(offsetWhoAmI, 20);
+            offsetLogo = tween(offsetLogo, 0);
+          } else {
+            if (mouseX < 0.2 * width && mouseY < headerY + height/5) {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 20);
+            } else {
+              offsetInclusivity = tween(offsetInclusivity, 0);
+              offsetInnovation = tween(offsetInnovation, 0);
+              offsetInitiative = tween(offsetInitiative, 0);
+              offsetWhoAmI = tween(offsetWhoAmI, 0);
+              offsetLogo = tween(offsetLogo, 0);
+            }
+          }
+        }
+      }
+    }
+    
+    headerY = tween(headerY, 0);
+    headerTransparency = tween(headerTransparency, 255);
+
+    offsetTitle = tween(offsetTitle, 0);
+    titleTransparency = tween(titleTransparency, 255);
+    titleX = tween(titleX, 0);
+    titleTransparency = tween(titleTransparency, 0);
+    underlineLength = tween(underlineLength, 0);
+    osaX = tween(osaX, 0.8 * width);
+    bodyTransparency = tween(bodyTransparency, 255);
+    arthurSize = tween(arthurSize, 0.7 * height);
+
+    if (millis() - millisMarker > 3500 && hasScrolled == false) {
+      footerTransparency = tween(footerTransparency, 255);
+    } else {
+      footerTransparency = tween(footerTransparency, 0);
+    }
   }
 
   if (level == "initiative") {
@@ -2419,6 +2872,15 @@ function mousePressed() {
                 levelSetup();
               } else {
                 if (millis() - millisMarker > 1000) {
+                  if (level == "whoami1" && millis() - millisMarker > 3000) {
+                    level = "whoami2";
+                    levelSetup();
+                  }
+                  if (level == "whoami") {
+                    level = "whoami1";
+                    levelSetup();
+                  }
+
                   if (level == "initiative1") {
                     level = "initiative2";
                     levelSetup();
@@ -2456,11 +2918,20 @@ function mousePressed() {
 }
 
 function mouseWheel() {
-  if (isMobile == false && millis() - touchCooldown > 1000 && abs(event.deltaY) > 100) {
+  if (isMobile == false && millis() - touchCooldown > 1000 && abs(event.deltaY) > 50) {
     touchCooldown = millis();
     if (level != "home" || millis() - millisMarker > 2000) {
 
       if (millis() - millisMarker > 1000) {
+        if (level == "whoami1" && millis() - millisMarker > 3000) {
+          level = "whoami2";
+          levelSetup();
+        }
+        if (level == "whoami") {
+          level = "whoami1";
+          levelSetup();
+        }
+
         if (level == "initiative1") {
           level = "initiative2";
           levelSetup();
