@@ -1150,7 +1150,7 @@ function draw() {
     textSize(30);
     textFont(montserrat);
     textAlign(LEFT);
-    text("I made this entirely with one of the worst programming tools ever, PROCESSING. No other candidate has the same level of determination to help the school other than me.", 0.1 * width, 0.3 * height + 100, 0.5 * width);
+    text("I made this entirely with one of the worst programming tools ever, PROCESSING. No candidate has the same level of determination to help the school other than me.", 0.1 * width, 0.3 * height + 100, 0.5 * width);
 
     textFont(montserrat);
     text("I am", 0.1 * width, 0.3 * height + 300, 0.5 * width);
@@ -1385,7 +1385,7 @@ function draw() {
     textSize(20);
     textFont(montserrat);
     textAlign(LEFT);
-    text("I made this entirely with one of the worst programming tools ever, PROCESSING. With resilience and dedication, no other candidate has the same level of determination to help the school other than me.", 0.1 * width, 0.2 * height + 100, 0.8 * width);
+    text("I made this entirely with one of the worst programming tools ever, PROCESSING. With resilience and dedication, no candidate has the same level of determination to help the school other than me.", 0.1 * width, 0.2 * height + 100, 0.8 * width);
 
     tint(255, 200, 200, bodyTransparency);
     imageMode(CENTER);
