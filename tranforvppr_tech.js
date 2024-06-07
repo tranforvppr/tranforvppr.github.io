@@ -3227,7 +3227,7 @@ function touchEnded() {
           level = "mobileMenu";
           levelSetup();
         } else {
-          if (millis() - millisMarker > 1000) {
+          if (millis() - millisMarker > 3000) {
             if (level == "mobileWhoami1") {
               level = "mobileWhoami2";
               levelSetup();
